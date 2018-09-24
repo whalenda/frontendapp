@@ -4,7 +4,7 @@ Team Gulo gulo
 #todo - fill in README information
 
 # Directory
-* README
+* README.md
 * Starter App
   * .idea
     * workspace.xml
