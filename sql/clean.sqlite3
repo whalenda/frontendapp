@@ -1,0 +1,4 @@
+DROP TABLE Accounts;
+DROP TABLE Models;
+DROP TABLE UserModels;
+DROP TABLE Pictures;
