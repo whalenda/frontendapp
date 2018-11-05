@@ -3,12 +3,12 @@ Team Gulo gulo
 
 #todo - fill in README information
 
-# Directory
+# File Structure
 * README.md
-* Starter App
-  * .idea
-    * workspace.xml
-  * gulo-gulo
+* Starter App (where we build Starter App)
+* app (where the Android App is)
+* server (where our REST API and server code lives)
+* design (where we map out our design and architecture)
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ A step by step series of examples that tell you how to get a development env run
 2. Open the App folder in Android Studio
 3. Click 'run' or press F10
 4. Click 'create new virtual device'
-5. Create a virtual device using a Nexus 5X 
+5. Create a virtual device using a Nexus 5X
 6. Download and install Oreo (ensure that it is the version running API 26)
 7. The app will now run in your newly made Android Emulator
 ## Running the tests
@@ -64,7 +64,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
