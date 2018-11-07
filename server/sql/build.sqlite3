@@ -1,0 +1,40 @@
+-- Accounts Table --
+CREATE TABLE Accounts (
+    email text PRIMARY KEY,
+    password text NOT NULL
+);
+
+-- Models Table --
+CREATE TABLE Models (
+    id integer PRIMARY KEY,
+    name text NOT NULL,
+    path text NOT NULL,
+    mid integer NOT NULL,
+    description text
+);
+
+-- UsersModels Table --
+CREATE TABLE UserModels (
+    email text NOT NULL,
+    id integer NOT NULL,
+    PRIMARY KEY(email, id),
+    FOREIGN KEY (email)
+        REFERENCES Accounts(email)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (id)
+        REFERENCES Models(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+-- Pictures Table --
+CREATE TABLE Pictures (
+    id integer PRIMARY KEY,
+    score REAL NOT NULL,
+    path text NOT NULL,
+    FOREIGN KEY (id)
+        REFERENCES Models(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
