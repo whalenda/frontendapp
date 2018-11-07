@@ -1,9 +1,41 @@
-*.iml
-.gradle
-local.properties
-.idea/*
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+*/app/local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
 .DS_Store
-build/
-captures/
+
+# Android Studio
+*.iml
+*/app/.idea
+*/app/.idea/workspace.xml
+*/app/.idea/libraries
+*/app/.idea/assetWizardSettings.xml
+*/app/.idea/gradle.xml
+*/app/.idea/caches
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+*/app/.gradle
+*/app/build/
+*/app/.navigation
+*/app/captures/
+*/app/output.json 
+
+#NDK
+obj/
 .externalNativeBuild
-*.db
