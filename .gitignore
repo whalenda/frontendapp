@@ -13,7 +13,7 @@ bin/
 gen/
 
 # Local configuration file (sdk path, etc)
-*/app/local.properties
+*/local.properties
 
 # Windows thumbnail db
 Thumbs.db
@@ -23,18 +23,18 @@ Thumbs.db
 
 # Android Studio
 *.iml
-*/app/.idea
-*/app/.idea/workspace.xml
-*/app/.idea/libraries
-*/app/.idea/assetWizardSettings.xml
-*/app/.idea/gradle.xml
-*/app/.idea/caches
+*/.idea
+*/.idea/workspace.xml
+*/.idea/libraries
+*/.idea/assetWizardSettings.xml
+*/.idea/gradle.xml
+*/.idea/caches
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-*/app/.gradle
-*/app/build/
-*/app/.navigation
-*/app/captures/
-*/app/output.json 
+*/.gradle
+*/build/
+*/.navigation
+*/captures/
+*/output.json 
 
 #NDK
 obj/
