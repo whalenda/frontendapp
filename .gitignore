@@ -39,3 +39,11 @@ Thumbs.db
 #NDK
 obj/
 .externalNativeBuild
+
+# Python
+*.pyc
+*pycache*
+*.egg-info/
+
+# Database Files
+*.db
