@@ -111,7 +111,7 @@ ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\ap
 	android:name
 		ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:23:27-74
 activity#com.gulogulo.starterapp.MainActivity
-ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:26:9-49
+ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:26:9-50
 	android:name
 		ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:26:19-47
 activity#com.gulogulo.starterapp.PhotoActivity
@@ -130,6 +130,10 @@ ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\ap
 		ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:33:13-57
 	android:name
 		ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:32:13-42
+activity#com.gulogulo.starterapp.Login2
+ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:34:9-53
+	android:name
+		ADDED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml:34:19-41
 uses-sdk
 INJECTED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\David\AndroidStudioProjects\StarterApp\gulo-gulo\souvenir\app\src\main\AndroidManifest.xml
