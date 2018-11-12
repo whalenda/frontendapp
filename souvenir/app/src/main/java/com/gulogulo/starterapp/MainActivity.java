@@ -69,38 +69,31 @@ public class MainActivity extends AppCompatActivity {
             //TODO: send photo to server via volley
             Log.d("photovalue", data.toString());
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            final String encodedImageData
-                    =getEncoded64ImageStringFromBitmap(photo);
+            final String encodedImageData = getEncoded64ImageStringFromBitmap(photo);
             RequestQueue queue = Volley.newRequestQueue(this);
-            StringRequest postRequest = new
-                    StringRequest(Request.Method.POST, url,
-                            new Response.Listener<String>()
-                            {
-                                @Override
-                                public void onResponse(String response) {
-                                    // TODO set session
-                                    // go to main activity
-
-
-                                }
-                            },
-                            new Response.ErrorListener()
-                            {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-
-                                }
-                            }
-                    ) {
+            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
                         @Override
-                        protected Map<String, String> getParams()
-                        {
-                            Map<String, String>  params = new HashMap<String, String>();
-                            params.put("image", encodedImageData);
-
-                            return params;
+                        public void onResponse(String response) {
+                            // TODO set session
+                            // go to main activity
                         }
-                    };
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+
+                        }
+                    })
+            {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String>  params = new HashMap<String, String>();
+                    params.put("image", encodedImageData);
+                        return params;
+                }
+            };
             queue.add(postRequest);
         }
     }
