@@ -1,9 +1,11 @@
 package com.gulogulo.starterapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
+    @SuppressLint("LongLogTag")
     @Override
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -67,39 +70,49 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
             //TODO: send photo to server via volley
-            Log.d("photovalue", data.toString());
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            final String encodedImageData =getEncoded64ImageStringFromBitmap(photo);
-            RequestQueue queue = Volley.newRequestQueue(this);
-            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response) {
-                            // TODO set session
-                            // go to main activity
 
 
+            Uri selectedImageUri = data.getData();
+            try {
+                Bitmap photo = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+
+                final String encodedImageData = getEncoded64ImageStringFromBitmap(photo);
+                RequestQueue queue = Volley.newRequestQueue(this);
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // TODO set session
+                                // go to main activity
+                                Log.d("pass?", encodedImageData);
+                                Intent intent = new Intent(MainActivity.this, info.class);
+                                startActivity(intent);
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("fail", encodedImageData);
+                                Intent intent = new Intent(MainActivity.this, info.class);
+                                startActivity(intent);
+                            }
                         }
-                    },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("email", encodedImageData);
+                        params.put("password", encodedImageData);
 
-                        }
+                        return params;
                     }
-            ) {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String>  params = new HashMap<String, String>();
-                    params.put("image", encodedImageData);
+                };
+                queue.add(postRequest);
+            } catch (java.io.IOException error){
+                Log.d("photovalue", data.toString());
+            }
 
-                    return params;
-                }
-            };
-            queue.add(postRequest);
         }
     }
 
