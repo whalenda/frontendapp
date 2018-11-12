@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-        // Create intent to Open Image applications like Gallery, Google Photo
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // Create intent to Open Image applications like Gallery, Google Photo
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
@@ -69,36 +69,38 @@ public class MainActivity extends AppCompatActivity {
             //TODO: send photo to server via volley
             Log.d("photovalue", data.toString());
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            final String encodedImageData =getEncoded64ImageStringFromBitmap(photo);
+            final String encodedImageData
+                    =getEncoded64ImageStringFromBitmap(photo);
             RequestQueue queue = Volley.newRequestQueue(this);
-            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
+            StringRequest postRequest = new
+                    StringRequest(Request.Method.POST, url,
+                            new Response.Listener<String>()
+                            {
+                                @Override
+                                public void onResponse(String response) {
+                                    // TODO set session
+                                    // go to main activity
+
+
+                                }
+                            },
+                            new Response.ErrorListener()
+                            {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            }
+                    ) {
                         @Override
-                        public void onResponse(String response) {
-                            // TODO set session
-                            // go to main activity
+                        protected Map<String, String> getParams()
+                        {
+                            Map<String, String>  params = new HashMap<String, String>();
+                            params.put("image", encodedImageData);
 
-
+                            return params;
                         }
-                    },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-                    }
-            ) {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String>  params = new HashMap<String, String>();
-                    params.put("image", encodedImageData);
-
-                    return params;
-                }
-            };
+                    };
             queue.add(postRequest);
         }
     }

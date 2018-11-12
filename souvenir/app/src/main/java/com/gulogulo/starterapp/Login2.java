@@ -62,10 +62,10 @@ public class Login2 extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Intent intent = new Intent(Login2.this, MainActivity.class);
-                        startActivity(intent);
-                        //TextView errortext = (TextView) findViewById(R.id.errortext);
-                        //errortext.setText("invalid email and password combination");
+                        //Intent intent = new Intent(Login2.this, MainActivity.class);
+                        //startActivity(intent);
+                        TextView errortext = (TextView) findViewById(R.id.errortext);
+                        errortext.setText("invalid email and password combination");
                     }
                 }
         ) {
