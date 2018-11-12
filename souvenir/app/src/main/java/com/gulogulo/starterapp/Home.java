@@ -17,4 +17,8 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(Home.this, Login2.class);
         startActivity(intent);
     }
+    public void gotoregister(View view){
+        Intent intent = new Intent(Home.this, Register.class);
+        startActivity(intent);
+    }
 }

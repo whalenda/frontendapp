@@ -31,7 +31,8 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Login2"></activity>
+        <activity android:name=".Login2" />
+        <activity android:name=".Register"></activity>
     </application>
 
 </manifest>
