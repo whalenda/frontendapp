@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
     }
-    @SuppressLint("LongLogTag")
+
     @Override
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             Uri selectedImageUri = data.getData();
             try {
-                Bitmap photo = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+                final Bitmap photo = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
 
                 final String encodedImageData = getEncoded64ImageStringFromBitmap(photo);
                 RequestQueue queue = Volley.newRequestQueue(this);
@@ -85,8 +85,12 @@ public class MainActivity extends AppCompatActivity {
                                 // TODO set session
                                 // go to main activity
                                 Log.d("pass?", encodedImageData);
-                                Intent intent = new Intent(MainActivity.this, info.class);
+                                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
+                                ByteArrayOutputStream bs = new ByteArrayOutputStream();
+                                photo.compress(Bitmap.CompressFormat.PNG, 50, bs);
+                                intent.putExtra("byteArray", bs.toByteArray());
                                 startActivity(intent);
+
 
                             }
                         },
@@ -94,8 +98,12 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("fail", encodedImageData);
-                                Intent intent = new Intent(MainActivity.this, info.class);
+                                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
+                                ByteArrayOutputStream bs = new ByteArrayOutputStream();
+                                photo.compress(Bitmap.CompressFormat.PNG, 50, bs);
+                                intent.putExtra("byteArray", bs.toByteArray());
                                 startActivity(intent);
+
                             }
                         }
                 ) {
