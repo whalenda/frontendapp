@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        final String url = "http://35.237.212.25:8000/accounts/login";
+        final String url = "http://10.0.2.2:8000/image";
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
             //TODO: send photo to server via volley
@@ -84,11 +84,12 @@ public class MainActivity extends AppCompatActivity {
                             public void onResponse(String response) {
                                 // TODO set session
                                 // go to main activity
-                                Log.d("pass?", encodedImageData);
+                                Log.d("pass?", response);
                                 Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
                                 ByteArrayOutputStream bs = new ByteArrayOutputStream();
                                 photo.compress(Bitmap.CompressFormat.PNG, 50, bs);
                                 intent.putExtra("byteArray", bs.toByteArray());
+                                intent.putExtra("response", response);
                                 startActivity(intent);
 
 
@@ -98,10 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.d("fail", encodedImageData);
-                                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
-                                ByteArrayOutputStream bs = new ByteArrayOutputStream();
-                                photo.compress(Bitmap.CompressFormat.PNG, 50, bs);
-                                intent.putExtra("byteArray", bs.toByteArray());
+                                Intent intent = new Intent(MainActivity.this, NoMatch.class);
                                 startActivity(intent);
 
                             }
@@ -110,9 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<String, String>();
-                        params.put("email", encodedImageData);
-                        params.put("password", encodedImageData);
-
+                        params.put("image", encodedImageData);
                         return params;
                     }
                 };

@@ -53,6 +53,8 @@ public class Login2 extends AppCompatActivity {
                     public void onResponse(String response) {
                         // TODO set session
                         // go to main activity
+
+
                         Intent intent = new Intent(Login2.this, MainActivity.class);
                         startActivity(intent);
 

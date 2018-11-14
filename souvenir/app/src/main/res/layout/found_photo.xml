@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/eiffel" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/description"
         android:layout_width="351dp"
         android:layout_height="175dp"
         android:layout_marginEnd="8dp"
@@ -40,6 +40,6 @@
         android:onClick="gotodone"
         android:text="Print!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
 </android.support.constraint.ConstraintLayout>
